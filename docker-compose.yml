@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+
+  rt_plan_classifier_app:
+    container_name: rt_plan_classifier
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    depends_on:
+      - db
+    env_file: .env
+    environment:
+      - MODE
+      - DB_MIGRATIONS_ENABLED=true
+      - DBHOST=db
+      - DBNAME
+      - DBUSER
+      - DBPASSWORD
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/rt_plan_classifier/:/opt/rt_plan_classifier
+
+  db:
+    image: postgres
+    restart: always
+    container_name: rt_plan_classifier_db
+    volumes:
+      - dbdata:/var/lib/postgresql
+    env_file: .env
+    environment:
+      POSTGRES_USER: $DBUSER
+      POSTGRES_PASSWORD: $DBPASSWORD
+      POSTGRES_DB: $DBNAME
+    ports:
+      - "5432:5432"
+
+volumes:
+  dbdata:

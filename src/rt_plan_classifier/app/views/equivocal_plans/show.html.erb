@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @equivocal_plan.id %>
+</p>
+
+<p>
+  <strong>Plan name:</strong>
+  <%= @equivocal_plan.plan_name %>
+</p>
+
+<p>
+  <strong>Canonical plan:</strong>
+  <%= @equivocal_plan.canonical_plan %>
+</p>
+
+<%= link_to 'Edit', edit_equivocal_plan_path(@equivocal_plan) %> |
+<%= link_to 'Back', equivocal_plans_path %>

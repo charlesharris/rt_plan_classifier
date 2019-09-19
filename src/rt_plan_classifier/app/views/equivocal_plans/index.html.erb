@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Equivocal Plans</h1>
+
+<%= paginate @equivocal_plans %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Plan name</th>
+      <th>Canonical plan</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equivocal_plans.each do |equivocal_plan| %>
+      <tr>
+        <td><%= equivocal_plan.id %></td>
+        <td><%= equivocal_plan.plan_name %></td>
+        <td><%= link_to equivocal_plan.canonical_plan.plan_name, url_for(equivocal_plan.canonical_plan) %></td>
+        <td><%= link_to 'Show', equivocal_plan %></td>
+        <td><%= link_to 'Edit', edit_equivocal_plan_path(equivocal_plan) %></td>
+        <td><%= link_to 'Destroy', equivocal_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Equivocal Plan', new_equivocal_plan_path %>

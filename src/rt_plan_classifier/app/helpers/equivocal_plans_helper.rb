@@ -1,0 +1,2 @@
+module EquivocalPlansHelper
+end

@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+
+development:
+  <<: *default
+  database: rt_plan_classifier_dev
+  username: <%= ENV.fetch("DBUSER") %>
+  password: <%= ENV.fetch("DBPASSWORD") %>
+  host: db
+
+test:
+  <<: *default
+  database: rt_plan_classifier_test
+  username: <%= ENV.fetch("DBUSER") %>
+  password: <%= ENV.fetch("DBPASSWORD") %>
+  host: db
+
+production:
+  <<: *default
+  database: rt_plan_classifier
+  username: <%= ENV.fetch("DBUSER") %>
+  password: <%= ENV.fetch("DBPASSWORD") %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @canonical_plan.id %>
+</p>
+
+<p>
+  <strong>Plan name:</strong>
+  <%= @canonical_plan.plan_name %>
+</p>
+
+<%= link_to 'Edit', edit_canonical_plan_path(@canonical_plan) %> |
+<%= link_to 'Back', canonical_plans_path %>
