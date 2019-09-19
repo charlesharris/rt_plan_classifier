@@ -1,8 +1,8 @@
 max_c_plans = 1000
 e_plans_per_c_plan = 1000
 
-ActiveRecord::Base.transaction do
-  (1..max_c_plans).each do |plan_number|
+(1..max_c_plans).each do |plan_number|
+  ActiveRecord::Base.transaction do
     canonical_plan_name = "Canonical Health Plan #{plan_number}"
     canonical_plan = CanonicalPlan.create({plan_name: canonical_plan_name})
 
